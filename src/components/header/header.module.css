@@ -1,0 +1,34 @@
+
+.container {
+    height: 70px;
+    background-color: var(--accent-color);
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-left: 40px;
+    padding-right: 40px;
+}
+
+.header {
+    font-size: 21px;
+    font-weight: 700;
+}
+
+.header__btns {
+    display: flex;
+    gap: 15px;
+}
+
+.settingBtn img {
+    height: 25px;
+}
+
+.settingBtn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    height: 36px;
+    width: 36px;
+}
