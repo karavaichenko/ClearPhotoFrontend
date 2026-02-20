@@ -16,7 +16,7 @@ const Login = () => {
 
 
     const onSubmit = () => {
-        if (login.length > 5 && password.length > 5) {
+        if (login.length >= 5 && password.length >= 5) {
             dispatch(loginThunk(login, password))
         } else {
             dispatch(setResultCode(1))

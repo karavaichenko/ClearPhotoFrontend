@@ -15,10 +15,10 @@ const Registration = () => {
     const [password, setPassword] = useState("")
     const [code, setCode] = useState<number>()
     const onSubmit = () => {
-        if (login.length > 5 && password.length > 5 && email.length > 5) {
+        if (login.length >= 5 && password.length >= 5 && email.length >= 5) {
             dispatch(registerThunk(login, password, email))
         } else {
-            dispatch(setResultCode(5))
+            dispatch(setResultCode(50))
         }
     }
 
@@ -41,12 +41,11 @@ const Registration = () => {
     useEffect(() => {
 
     }, [me.resultCode])
-
     const warning = me.resultCode === 2 ? "Почта уже используется" : 
                     me.resultCode === 1 ? "Логин занят" :
                     me.resultCode === 3 ? "Что-то пошло не так" : 
                     me.resultCode === 4 ? "Неверный код" : 
-                    me.resultCode === 5 ? "Слишком коротко" : ""
+                    me.resultCode === 50 ? "Слишком коротко" : ""
 
     if (me.resultCode == 100 || me.resultCode == 4) {
         return (
