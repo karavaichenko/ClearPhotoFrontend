@@ -8,6 +8,9 @@ import { useAppDispatch } from './Store/hooks';
 import { useSelector } from 'react-redux';
 import { selectUserState } from './Store/selectors';
 import { authByCookiesThunk } from './Store/authReducer';
+import ProcessHistory from './components/content/processHistory/ProcessHistory';
+import ProcessPhoto from './components/content/processPhoto/ProcessPhoto';
+import Account from './components/login/Account';
 
 const router = createBrowserRouter([
   {
@@ -24,15 +27,15 @@ const router = createBrowserRouter([
   },
   {
     path: "/process",
-    element: <ProtectedRoute children={<Main />} />,
+    element: <ProtectedRoute children={<ProcessPhoto />} />,
   },
   {
     path: "/history",
-    element: <ProtectedRoute children={<Main />} />,
+    element: <ProtectedRoute children={<ProcessHistory />} />,
   },
   {
     path: "/account",
-    element: <ProtectedRoute children={<Main />} />,
+    element: <ProtectedRoute children={<Account />} />,
   },
 ]);
 
