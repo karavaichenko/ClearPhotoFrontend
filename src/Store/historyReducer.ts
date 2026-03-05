@@ -176,10 +176,19 @@ export const changeFilterThunk = (filter: 'all' | 'processed' | 'unprocessed'): 
 export const loadMorePhotosThunk = (): AppThunk => (dispatch, getState) => {
     const state = getState().history
     const newOffset = state.offset + state.limit
-    
+
     if (newOffset < state.total) {
         dispatch(fetchUserPhotosThunk(state.limit, newOffset))
     }
 }
+
+// Селекторы
+export const selectHistoryPhotos = (state: RootState) => state.history.photos
+export const selectHistoryTotal = (state: RootState) => state.history.total
+export const selectHistoryLimit = (state: RootState) => state.history.limit
+export const selectHistoryOffset = (state: RootState) => state.history.offset
+export const selectHistoryLoading = (state: RootState) => state.history.isLoading
+export const selectHistoryStats = (state: RootState) => state.history.stats
+export const selectHistoryFilter = (state: RootState) => state.history.filter
 
 export default historySlice

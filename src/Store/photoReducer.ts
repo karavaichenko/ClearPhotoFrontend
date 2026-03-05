@@ -177,4 +177,9 @@ export const stopPollingThunk = (): AppThunk => () => {
     // Для простоты просто меняем состояние
 }
 
+// Селекторы
+export const selectCurrentPhoto = (state: RootState) => state.photo.currentPhoto
+export const selectProcessingState = (state: RootState) => state.photo.processingState
+export const selectErrorMessage = (state: RootState) => state.photo.errorMessage
+
 export default photoSlice

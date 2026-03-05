@@ -1,8 +1,12 @@
+import Header from "../header/Header"
 
 
 const Account = () => {
     return (
-        <div>Account</div>
+        <div>
+            <Header />
+            <div>Account</div>
+        </div>
     )
 }
 

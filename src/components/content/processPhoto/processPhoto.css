@@ -1,0 +1,194 @@
+/* Навигационное меню */
+.nav-menu {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 24px;
+  padding: 8px;
+  background-color: #f5f5f5;
+  border-radius: 12px;
+}
+
+.nav-menu .nav-item {
+  flex: 1;
+  padding: 12px 24px;
+  border-radius: 10px;
+  border: none;
+  background-color: transparent;
+  color: var(--font-color);
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.nav-menu .nav-item:hover {
+  background-color: #e8e8e8;
+}
+
+.nav-menu .nav-item.active {
+  background-color: var(--accent-color);
+  color: white;
+}
+
+/* Контейнер страницы */
+.page-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 24px 16px;
+}
+
+.page-title {
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 24px;
+  color: var(--font-color);
+}
+
+/* Загрузка файла */
+.upload-area {
+  border: 2px dashed var(--accent-color-sec);
+  border-radius: 16px;
+  padding: 48px 24px;
+  text-align: center;
+  background-color: #f8fdfa;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-bottom: 24px;
+}
+
+.upload-area:hover,
+.upload-area.drag-over {
+  border-color: var(--accent-color);
+  background-color: #f0fdf4;
+}
+
+.upload-area.has-file {
+  border-style: solid;
+  background-color: #e8f5e9;
+}
+
+.upload-area .upload-icon {
+  font-size: 48px;
+  margin-bottom: 16px;
+  color: var(--accent-color);
+}
+
+.upload-area .upload-text {
+  font-size: 16px;
+  font-weight: 500;
+  margin-bottom: 8px;
+}
+
+.upload-area .upload-hint {
+  font-size: 14px;
+  color: #888;
+}
+
+.upload-area input[type="file"] {
+  display: none;
+}
+
+/* Прогресс бар */
+.progress-container {
+  margin-bottom: 24px;
+}
+
+.progress-bar {
+  height: 12px;
+  background-color: #e0e0e0;
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 12px;
+}
+
+.progress-bar .progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--accent-color-sec), var(--accent-color));
+  border-radius: 10px;
+  transition: width 0.3s ease;
+}
+
+.progress-info {
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+  color: var(--font-color);
+}
+
+.progress-stats {
+  display: flex;
+  gap: 24px;
+  margin-top: 16px;
+  padding: 16px;
+  background-color: #f5f5f5;
+  border-radius: 10px;
+}
+
+.progress-stats .stat {
+  text-align: center;
+}
+
+.progress-stats .stat-value {
+  font-size: 24px;
+  font-weight: 600;
+  color: var(--accent-color);
+}
+
+.progress-stats .stat-label {
+  font-size: 12px;
+  color: #888;
+  text-transform: uppercase;
+}
+
+/* Результат обработки */
+.result-container {
+  text-align: center;
+  padding: 32px;
+  background-color: #f8fdfa;
+  border-radius: 16px;
+  margin-bottom: 24px;
+}
+
+.result-container .result-title {
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--accent-color);
+  margin-bottom: 24px;
+}
+
+.result-container .result-image {
+  max-width: 100%;
+  max-height: 400px;
+  border-radius: 12px;
+  box-shadow: 0px 4px 12px 0px #2c2c2c2a;
+  margin-bottom: 24px;
+}
+
+.result-container .result-actions {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+}
+
+/* Сообщение об ошибке */
+.error-message {
+  padding: 16px 24px;
+  background-color: #ffebee;
+  border: 1px solid #ef9a9a;
+  border-radius: 10px;
+  color: #c62828;
+  font-size: 14px;
+  margin-bottom: 24px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.error-message .error-icon {
+  font-size: 20px;
+}
