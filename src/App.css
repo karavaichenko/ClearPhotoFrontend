@@ -64,41 +64,214 @@ label {
   margin-left: 5px;
 }
 
+.loader {
+  width: 48px;
+  height: 48px;
+  border: 5px solid var(--accent-color);
+  border-bottom-color: var(--font-color);
+  border-radius: 50%;
+  display: inline-block;
+  box-sizing: border-box;
+  animation: rotation 1s linear infinite;
+}
+
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+} 
 
 
-/* Навигационное меню */
-.nav-menu {
+/* ===================== TABLES ==================== */
+
+.table__container {
+    background-color: #FFFFFF;
+    border-radius: 11px;
+    box-shadow: 0px 4px 9px 0px #00000040;
+    width: 70vw;
+}
+
+.table__wrapper {
+    border-radius: 10px;
+    overflow-y: auto;
+    overflow-x: auto;
+    max-height: 80vh;
+    min-width: 100%;
+}
+
+.table__wrapper::-webkit-scrollbar { width: 10px; height: 10px;}
+
+.table__wrapper::-webkit-scrollbar-track { 
+    background-color: #E5E7EB;
+    border-radius: 5px; 
+}
+
+.table__wrapper::-webkit-scrollbar-thumb { 
+    background-color: #2563EB1A;
+    border-radius: 4px; 
+}
+
+.table {
+    width: 100%;
+    min-width: fit-content;
+    border-collapse: collapse;
+}
+
+tbody tr {
+  transition: background-color 0.3s;
+}
+
+tbody tr:hover {
+  background-color: rgba(243, 244, 246, 1);
+}
+
+tr {
+    font-weight: 400;
+    font-size: 14px;
+    height: 38px;
+    margin-bottom: 1px;
+    border-bottom: 2px solid #E6E8F0;
+}
+
+thead tr th div {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+tr td div {
+    overflow: hidden;
+    min-width: max-content;
+    height: 40px;
+}
+
+thead th {
+    font-size: 14px;
+    font-weight: 700;
+    position: sticky;
+    top: 0;
+    background-color: white;
+    border-bottom: 2px solid #E6E8F0;
+    padding-right: 10px;
+}
+
+.table th:last-child,
+.table td:last-child {
+    text-align: center;
+    justify-items: center;
+    padding-right: 5px;
+}
+
+th:first-child,
+td:first-child {
+    padding-left: 14px;
+}
+
+tr:last-child {
+    border-bottom: none;
+}
+
+.table td,
+.table tr div{
+    padding-right: 30px;
+    white-space: nowrap;
+}
+.table td:last-child,
+.table th:last-child div,
+.table tr div:last-child
+{
+    padding-right: 5px;
+}
+
+/* Кнопки сотритовки столбцов */
+.table__sort-button {
+    width: 15px;
+    min-height: 15px;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-image: url("/static/img/icons/no_filter.svg");
+}
+
+.table__sort-button--up {
+    width: 15px;
+    min-height: 15px;
+    transform: rotate(180deg);
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-image: url("/static/img/icons/arrow_downward.svg");
+}
+
+.table__sort-button--down {
+    width: 15px;
+    min-height: 15px;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-image: url("/static/img/icons/arrow_downward.svg");
+}
+
+/* Выделенные ячейки таблицы */
+.feature--good {
+    height: 28px;
+    width: max-content;
+    border-radius: 13px;
+    padding: 6px 20px 7px 20px;
+    text-align: center;
+
+    color: #166534;
+    background-color: #E6F6EC;
+}
+
+.feature--medium {
+    height: 28px;
+    width: max-content;
+    border-radius: 13px;
+    padding: 6px 20px 7px 20px;
+    text-align: center;
+
+    color: #A16207;
+    background-color: #FFF1CC;
+}
+
+.feature--bad {
+    height: 28px;
+    width: max-content;
+    border-radius: 13px;
+    padding: 6px 20px 7px 20px;
+    text-align: center;
+
+    color: #BE123C;
+    background-color: #FFE4E6;
+}
+
+/* Кнопка действия в строке */
+
+.row-button__container {
   display: flex;
-  gap: 8px;
-  margin-bottom: 24px;
-  padding: 8px;
-  background-color: #f5f5f5;
-  border-radius: 12px;
+  gap: 10px;
 }
 
-.nav-menu .nav-item {
-  flex: 1;
-  padding: 12px 24px;
-  border-radius: 10px;
-  border: none;
-  background-color: transparent;
-  color: var(--font-color);
-  font-size: 15px;
-  font-weight: 500;
-  cursor: pointer;
-  transition: all 0.2s ease;
-  text-decoration: none;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
+.row-button {
+    display: flex;
+    flex-direction: row;
+    border-radius: 9px;
+    background-color: #F3F4F6;
+    border: 2px solid var(--accent-color);
+    width: 32px;
+    height: 32px;
+    justify-content: center;
+    align-items: center;
+    transition-duration: 0.3s;
 }
 
-.nav-menu .nav-item:hover {
-  background-color: #e8e8e8;
+.row-button img {
+  padding: 5px !important;
 }
 
-.nav-menu .nav-item.active {
-  background-color: var(--accent-color);
-  color: white;
+.table tr img {
+  height: 200px;
+  padding: 20px 0;
 }
+

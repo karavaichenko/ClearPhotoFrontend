@@ -1,0 +1,89 @@
+
+
+.container {
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.wrapper {
+    width: fit-content;
+    display: flex;
+    flex-direction: column;
+    padding: 50px;
+    border-radius: 20px;
+    background-color: rgba(235, 235, 235, 0.596);
+}
+
+.initHeader {
+    color:  var(--font-color);
+    margin: 40px 0;
+    font-size: 25px;
+    font-weight: 700;
+}
+
+.wrapper>img {
+    height: 50vh;
+}
+
+.infoContainer {
+    margin: 20px 0;
+    border-radius: 10px;
+    padding: 15px 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 50px;
+    gap: 30px;
+    background-color: var(--font-color);
+}
+
+.infoItem {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    /* color: var(--accent-color); */
+    color: rgb(188, 248, 186);
+}
+
+.infoItemNum {
+    color: var(--font-color);
+    background-color: var(--accent-color);
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.btnsContainer {
+    display: flex;
+    align-items: center;
+    /* justify-content: space-between; */
+    gap: 20px;
+    margin: 15px auto;
+}
+
+.downloadBtn {
+    margin: 15px auto;
+    padding: 10px 20px;
+    border-radius: 10px;
+    font-size: 17px;
+    color: var(--accent-color);
+    background-color: var(--font-color);
+}
+
+
+.resetBtn {
+    padding: 10px 20px;
+    border-radius: 10px;
+    font-size: 17px;
+    background-color: var(--accent-color);
+    color: var(--font-color);
+}
+
+.errorMsg {
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 50px;
+}
+

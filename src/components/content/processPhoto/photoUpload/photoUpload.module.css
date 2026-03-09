@@ -1,0 +1,22 @@
+.imageLoaderArea {
+    width: 500px;
+    height: 30vh;
+    background-color: rgb(255, 255, 255);
+    border-radius: 20px;
+    border: 3px var(--accent-color) solid;
+    cursor: pointer;
+    transition-duration: 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.imageInput {
+    display: none;
+}
+
+.loaderHint {
+    color: var(--font-color);
+    font-size: 20px;
+    font-weight: 600;
+}
