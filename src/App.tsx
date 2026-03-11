@@ -11,6 +11,7 @@ import { authByCookiesThunk } from './Store/authReducer';
 import ProcessHistory from './components/content/processHistory/ProcessHistory';
 import ProcessPhoto from './components/content/processPhoto/ProcessPhoto';
 import Account from './components/login/Account';
+import PhotoFromHistory from './components/content/photoFromHistory/PhotoFromHistory';
 
 const router = createBrowserRouter([
   {
@@ -32,6 +33,10 @@ const router = createBrowserRouter([
   {
     path: "/history",
     element: <ProtectedRoute children={<ProcessHistory />} />,
+  },
+  {
+    path: "/history/:photoId",
+    element: <ProtectedRoute children={<PhotoFromHistory />} />,
   },
   {
     path: "/account",

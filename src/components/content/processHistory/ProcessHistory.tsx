@@ -6,6 +6,7 @@ import { useAppDispatch } from "../../../Store/hooks"
 import { getHistoryPhotosThunk, getHistoryThunk } from "../../../Store/historyReducer"
 import { useSelector } from "react-redux"
 import { selectHistoryState } from "../../../Store/selectors"
+import { Link } from "react-router"
 
 
 const ProcessHistory = () => {
@@ -22,6 +23,25 @@ const ProcessHistory = () => {
         }
     }, [historyState.photos, dispatch])
 
+
+    const handleDownload = async (photoUrl: string) => {
+        if (!photoUrl) return
+        try {
+            const response = await fetch(photoUrl)
+            const blob = await response.blob()
+            const url = window.URL.createObjectURL(blob)
+            const link = document.createElement('a')
+            link.href = url
+            link.download = 'processedPhoto.jpg'
+            document.body.appendChild(link)
+            link.click()
+            document.body.removeChild(link)
+            window.URL.revokeObjectURL(url)
+        } catch (error) {
+            console.error('Ошибка при скачивании:', error)
+        }
+    }
+
     const rowsElems = historyState.photos.map((e, ind) => {
         return (
             <tr key={ind}>
@@ -31,8 +51,8 @@ const ProcessHistory = () => {
                 <td>{e.plates}</td>
                 <td>
                     <div className="row-button__container">
-                        <button className="row-button"><img src="/public/download.svg" alt=""></img></button>
-                        <button className="row-button"><img src="/public/edit.svg" alt=""></img></button>
+                        <button onClick={() => {handleDownload(historyState.photoUrls[ind])}} className="row-button"><img src="/public/download.svg" alt=""></img></button>
+                        <Link to={`/history/${e.id}`} className="row-button"><img src="/public/edit.svg" alt=""></img></Link>
                     </div>
                 </td>
             </tr>

@@ -10,8 +10,7 @@ const Main = () => {
             <Header />
             <NavMenu section="main"/>
 
-            
-
+    
         </div>
     )
 }
