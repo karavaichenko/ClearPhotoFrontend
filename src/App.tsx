@@ -3,7 +3,6 @@ import './App.css'
 import Registration from './components/login/Registration';
 import Login from './components/login/Login';
 import { ProtectedRoute } from './HOC/ProtectedRoute';
-import Main from './components/content/main/Main';
 import { useAppDispatch } from './Store/hooks';
 import { useSelector } from 'react-redux';
 import { selectUserState } from './Store/selectors';
@@ -24,7 +23,9 @@ const router = createBrowserRouter([
   },
   {
     path: "/",
-    element: <Main />,
+    // element: <Main />,
+    element: <ProtectedRoute children={<ProcessPhoto />} />,
+
   },
   {
     path: "/process",

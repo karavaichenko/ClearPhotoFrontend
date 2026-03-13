@@ -28,17 +28,28 @@ const currentPhotoSlice = createSlice({
     name: "history",
     initialState,
     reducers: {
-        setCurrentPhoto: (state, photo: PayloadAction<PhotoInfoType>) => {
+        setCurrentPhotoInfo: (state, photo: PayloadAction<PhotoInfoType>) => {
             state.photo = photo.payload
+        },
+        setCurrentPhotoResultUrl: (state, url: PayloadAction<string>) => {
+            state.resultUrl = url.payload
+        },
+        setCurrentPhotoEnteredUrl: (state, url: PayloadAction<string>) => {
+            state.enteredUrl = url.payload
+        },
+        resetCurrentPhotoState: (state) => {
+            state.photo = null
+            state.enteredUrl = null
+            state.resultUrl = null
         }
     }
 })
 
-export const { setCurrentPhoto } = currentPhotoSlice.actions
+export const { setCurrentPhotoInfo, setCurrentPhotoResultUrl, setCurrentPhotoEnteredUrl, resetCurrentPhotoState } = currentPhotoSlice.actions
 
 export const getCurrentPhotoInfoThunk = (photoId: number): AppThunk => (dispatch) => {
     photoHistoryAPI.getPhotoInfo(photoId).then((reqRes) => {
-        dispatch(setCurrentPhoto(reqRes.data))
+        dispatch(setCurrentPhotoInfo(reqRes.data))
     }).catch((error) => {
         if (error.response?.status === 401) {
             // 
@@ -50,14 +61,22 @@ export const getCurrentPhotoInfoThunk = (photoId: number): AppThunk => (dispatch
 
 export const getCurrentPhotoUrlThunk = (photoId: number): AppThunk => (dispatch) => {
     photoProcessAPI.getEnteredPhoto(photoId).then((reqRes) => {
-        // TODO:
-    }).catch(() => {
-        // TODO:
+        dispatch(setCurrentPhotoEnteredUrl(URL.createObjectURL(reqRes.data)))
+    }).catch((error) => {
+        if (error.response?.status === 401) {
+            // 
+        } else {
+            console.log(error);
+        }
     })
     photoProcessAPI.getResultPhoto(photoId).then((reqRes) => {
-        // TODO: 
-    }).catch(() => {
-        // TODO:
+        dispatch(setCurrentPhotoResultUrl(URL.createObjectURL(reqRes.data)))
+    }).catch((error) => {
+        if (error.response?.status === 401) {
+            // 
+        } else {
+            console.log(error);
+        }
     })
 }
 

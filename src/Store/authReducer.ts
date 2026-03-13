@@ -127,22 +127,6 @@ export const logoutThunk = () => (dispatch: AppDispatch) => {
 }
 
 
-export const changePasswordThunk = (oldPassword: string, newPassword: string) => (dispatch: AppDispatch) => {
-    authAPI.changePassword(oldPassword, newPassword)
-    .then((data) => {
-        if (data.data.resultCode === 5) {
-            dispatch(authByCookiesThunk())
-            dispatch(changePasswordThunk(oldPassword, newPassword))
-        } else if (data.data.resultCode === 2) {
-            // неверный старый пароль
-            dispatch(setChangePassResultCode(2))
-        } else if (data.data.resultCode === 103){
-            // смена успешна
-            dispatch(setChangePassResultCode(1))
-        }
-    })
-}
-
 export default authSlice
 
 

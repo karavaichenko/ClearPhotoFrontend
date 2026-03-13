@@ -25,7 +25,7 @@ export const authAPI = {
         return instance.get<LoginResponseType>("auth")
     },
     changePassword: (oldPassword: string, newPassword: string) => {
-        return instance.post<ResultCodeResponseType>("auth/changePass", {oldPassword, newPassword})
+        return instance.post<ChangePasswordResType>("auth/password", {oldPassword, newPassword})
     }
 }
 
@@ -38,6 +38,22 @@ type LoginResponseType = {
 
 type ResultCodeResponseType = {
     resultCode: number
+}
+
+type ChangePasswordResType = {
+    result: "success" | "failed"
+}
+
+export const accountAPI = {
+    getAccountInfo: () => {
+        return instance.get<AccountInfoResponse>("/auth/account")
+    }
+}
+
+export type AccountInfoResponse = {
+    login: string
+    email: string
+    photoCount: number
 }
 
 
@@ -73,6 +89,7 @@ type ProcessPhotoResultType = {
     output_path: string
     faces: number
     plates: number
+    timestamp: string
 }
 
 export const photoHistoryAPI = {
@@ -88,7 +105,8 @@ export const photoHistoryAPI = {
 }
 
 type PhotoHistoryType = {
-    photos: Array<ProcessPhotoResultType> 
+    photos: Array<ProcessPhotoResultType>
+    count: number
 }
 
 

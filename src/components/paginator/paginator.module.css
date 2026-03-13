@@ -1,0 +1,33 @@
+.paginatorContainer {
+    display: flex;
+    padding: 10px;
+    box-shadow: 0px 4px 9px 0px #00000040;
+    margin-top: 20px;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 20px;
+}
+
+.paginatorControls {
+    display: flex;
+    padding: 10px;
+    align-items: center;
+    gap: 20px;
+    justify-content: space-between;
+}
+
+.paginatorPages {
+    display: flex;
+    /* padding: 10px; */
+    align-items: center;
+    gap: 20px;
+    justify-content: space-between;
+}
+
+.paginatorLimit {
+    display: flex;
+    /* padding: 10px; */
+    align-items: center;
+    gap: 10px;
+    justify-content: space-between;
+}

@@ -41,11 +41,11 @@ const Login = () => {
                     </div>
                     <div className={s.field}>
                         <label htmlFor="login">Логин</label>
-                        <input value={login} onChange={(e) => {setLogin(e.target.value)}} placeholder="Логин" id="login" className="field" type="text" />
+                        <input value={login} onChange={(e) => {setLogin(e.target.value.trim())}} placeholder="Логин" id="login" className="field" type="text" />
                     </div>
                     <div className={s.field}>
                         <label htmlFor="password">Пароль</label>
-                        <input value={password} onChange={(e) => {setPassword(e.target.value)}} placeholder="qwerty123" id="password" className="field" type="password" />
+                        <input value={password} onChange={(e) => {setPassword(e.target.value.trim())}} placeholder="qwerty123" id="password" className="field" type="password" />
                     </div>
 
                     <span className={s.warning}>{warning}</span>

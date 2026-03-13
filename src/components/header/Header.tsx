@@ -4,11 +4,19 @@ import { selectUserState } from "../../Store/selectors"
 import { Link } from "react-router"
 import { useAppDispatch } from "../../Store/hooks"
 import { logoutThunk } from "../../Store/authReducer"
+import { useState } from "react"
+import Account from "../login/Account"
 
 const Header = () => {
 
     const me = useSelector(selectUserState)
     const dispatch = useAppDispatch()
+
+    const [isAccount, setIsAccount] = useState(false)
+
+    const handleAccount = () => {
+        setIsAccount(!isAccount)
+    }
 
     const logoutOnClick = () => {
         dispatch(logoutThunk())
@@ -17,16 +25,17 @@ const Header = () => {
     if (me.resultCode === 1000) {
         return (
             <div className={s.container}>
-                <a href="/" className={s.header}>
+                <Link to="/" className={s.header}>
                     Clear Your Photo
-                </a>
+                </Link>
                 <div className={s.header__btns}>
                     <div className={s.settingBtn + " button"}>
-                        <Link to="/account"><img src="/public/setting.svg" alt="" /></Link>
+                        <button onClick={handleAccount}><img src="/public/setting.svg" alt="" /></button>
                     </div>
                     <div className={s.settingBtn + " button--primary"}>
                         <button onClick={logoutOnClick}><img src="/public/logout.svg" alt="" /></button>
                     </div>
+                    {isAccount ? <Account onClose={() => setIsAccount(false)} /> : ""}
                 </div>
             </div>
         )

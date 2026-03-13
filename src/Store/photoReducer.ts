@@ -16,6 +16,7 @@ export type PhotoInfoType = {
     output_path: string
     faces: number
     plates: number
+    timestamp: string
 }
 
 export type AppThunk<ReturnType = void> = ThunkAction<

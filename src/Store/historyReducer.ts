@@ -8,6 +8,7 @@ type HistoryStateType = {
     limit: number
     photos: Array<PhotoInfoType>
     photoUrls: Array<string>
+    count: number
 }
 
 export type AppThunk<ReturnType = void> = ThunkAction<
@@ -20,6 +21,7 @@ export type AppThunk<ReturnType = void> = ThunkAction<
 const initialState: HistoryStateType = {
     page: 1,
     limit: 10,
+    count: 0,
     photos: [],
     photoUrls: []
 }
@@ -30,6 +32,9 @@ const historySlice = createSlice({
     reducers: {
         setHistory: (state, history: PayloadAction<Array<PhotoInfoType>>) => {
             state.photos = history.payload
+        },
+        setPhotosCount: (state, count: PayloadAction<number>) => {
+            state.count = count.payload
         },
         setPhotoUrls: (state, urls: PayloadAction<Array<string>>) => {
             state.photoUrls = urls.payload
@@ -43,11 +48,12 @@ const historySlice = createSlice({
     }
 })
 
-export const {setHistory, setPhotoUrls, setHistoryLimit, setHistoryPage} = historySlice.actions
+export const {setHistory, setPhotoUrls, setHistoryLimit, setHistoryPage, setPhotosCount} = historySlice.actions
 
 export const getHistoryThunk = (page: number, limit: number): AppThunk => (dispatch) => {
     photoHistoryAPI.getPhotoHistory(page, limit).then((reqRes) => {
         dispatch(setHistory(reqRes.data.photos))
+        dispatch(setPhotosCount(reqRes.data.count))
     }).catch(error => {
         if (error.response?.status === 401) {
             // 
