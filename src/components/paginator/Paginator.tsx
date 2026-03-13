@@ -110,7 +110,7 @@ const Paginator = (props: PaginatorPropsType) => {
               key={index}
               onClick={() => typeof page === 'number' ? handlePageChange(page) : null}
               disabled={page === '...'}
-              className={`paginator-page ${props.currentPage === page ? 'active' : ''} ${page === '...' ? 'dots' : ''}`}
+              className={`paginator-page ${props.currentPage === page ? s.activePage : ''} ${page === '...' ? 'dots' : ''}`}
             >
               {page}
             </button>
@@ -121,7 +121,7 @@ const Paginator = (props: PaginatorPropsType) => {
         <button 
           onClick={() => handlePageChange(props.currentPage + 1)}
           disabled={props.currentPage === props.totalPages}
-          className="paginator-button"
+          className=" paginator-button"
           aria-label="Следующая страница"
         >
           ▶
